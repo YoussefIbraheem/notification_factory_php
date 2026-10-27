@@ -15,18 +15,23 @@ class Email implements NotificationType
     ) {}
 
 
-
-
     #[Override]
     public function send()
     {
-        $to = $this->recepientEmail;
-        $from = $this->senderEmail;
-        $subject = $this->subject;
-        $message = $this->body;
-        
-        $headers =  "From: " . $from . "\r\n" .
-            "X-Mailer: PHP/" . phpversion();
-        // sending mail mechanism
+        try {
+            $to = $this->recepientEmail;
+            $from = $this->senderEmail;
+            $subject = $this->subject;
+            $message = $this->body;
+
+            $headers =  "From: " . $from . "\r\n" .
+                "X-Mailer: PHP/" . phpversion();
+
+            mail($to, $subject, $message, $headers);
+
+            echo "Email Sent Successfully!";
+        } catch (\Throwable $th) {
+            echo $th->getMessage();
+        }
     }
 }
