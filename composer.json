@@ -1,0 +1,11 @@
+{
+    "name": "youssef/notification_factory_php",
+    "autoload": {
+        "psr-4": {
+            "Youssef\\NotificationFactoryPhp\\": "src/"
+        }
+    },
+    "require": {
+        "twilio/sdk": "^8.13"
+    }
+}
