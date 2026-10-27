@@ -25,20 +25,14 @@ class NotificationHandler
         $mail->send();
     }
 
-     public static function sendSms(
-        string $senderEmail,
-        string $receipientEmail,
-        ?string $subject,
-        string $senderName,
-        string $receipientName,
+    public static function sendSms(
+        string $senderNumber,
+        string $receipientNumber,
         string $body
     ) {
         $mail = new SmsCreator(
-            $senderEmail,
-            $receipientEmail,
-            $subject,
-            $senderName,
-            $receipientName,
+            $senderNumber,
+            $receipientNumber,
             $body
         );
 
