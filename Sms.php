@@ -14,7 +14,6 @@ class Sms implements NotificationType
     public function __construct(
         private string $senderNumber,
         private string $recepientNumber,
-        private ?string $subject,
         private string $body,
     ) {
         $this->dotenv = Dotenv::createImmutable(__DIR__);
@@ -38,12 +37,10 @@ class Sms implements NotificationType
         try {
             $to = $this->recepientNumber;
             $from = $this->senderNumber;
-            $subject = $this->subject;
             $body = $this->body;
 
             $this->client->messages->create($to, [
                 "from" => $from,
-                "subject" => $subject,
                 "body" => $body
             ]);
 
